@@ -1,6 +1,6 @@
 # LP1DPBO2024C2
 ## Janji
-Saya [Jidan Abdurahman Aufan] mengerjakan Latihan Praktikum 1 dalam mata kuliah [Desain Pemrograman Berorientasi Objek] untuk keberkahannya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin.
+Saya Franklin Impianro Turnip mengerjakan Latihan Praktikum 1 dalam mata kuliah Desain Pemrograman Berorientasi Objek untuk keberkahannya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin.
 
 ## Penjelesan Program
 Pada LP ini, dibuat console yang dapat menambah, mengubah, dan menghapus anggota DPR. Cara penggunaannya adalah sebagai berikut.
