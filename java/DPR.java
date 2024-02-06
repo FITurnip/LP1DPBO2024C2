@@ -62,17 +62,39 @@ public class DPR {
         return this.daftarAnggotaDPR;
     }
 
+    public void konfigurasiTabel(AnggotaDPR anggotaBaru) {
+        setMaksLebarNama(Math.max(this.ambilMaksLebarNama(), anggotaBaru.ambilNama().length() + 1));
+        setMaksLebarBidang(Math.max(this.ambilMaksLebarBidang(), anggotaBaru.ambilBidang().length() + 1));
+        setMaksLebarPartai(Math.max(this.ambilMaksLebarPartai(), anggotaBaru.ambilPartai().length() + 1));
+    }
+
     public void tambahAnggota(AnggotaDPR anggotaBaru) {
         int indexAnggotaDPRDicari = cariAnggota(anggotaBaru.ambilId());
-        if (indexAnggotaDPRDicari == daftarAnggotaDPR.size()) {
+        if(indexAnggotaDPRDicari == daftarAnggotaDPR.size()) {
             this.daftarAnggotaDPR.add(anggotaBaru);
+
             setMaksLebarId(Math.max(this.ambilMaksLebarId(), String.valueOf(anggotaBaru.ambilId()).length() + 1));
-            setMaksLebarNama(Math.max(this.ambilMaksLebarNama(), anggotaBaru.ambilNama().length() + 1));
-            setMaksLebarBidang(Math.max(this.ambilMaksLebarBidang(), anggotaBaru.ambilBidang().length() + 1));
-            setMaksLebarPartai(Math.max(this.ambilMaksLebarPartai(), anggotaBaru.ambilPartai().length() + 1));
+            konfigurasiTabel(anggotaBaru);
         } else {
             System.out.println("ditemukan id sama");
         }
+    }
+
+    private int maksimum(int a, int b) {
+        return a > b ? a : b;
+    }
+
+    private int hitungPanjangUnsignedInt(int bil) {
+        int totalDigit = 0;
+        if(bil == 0) totalDigit = 1;
+        else {
+            while(bil != 0) {
+                bil /= 10;
+                totalDigit++;
+            }
+        }
+
+        return totalDigit;
     }
 
     private int cariAnggota(int idAnggota) {
@@ -90,6 +112,8 @@ public class DPR {
             daftarAnggotaDPR.get(indexAnggotaDPRDicari).setNama(dataAnggota.ambilNama());
             daftarAnggotaDPR.get(indexAnggotaDPRDicari).setBidang(dataAnggota.ambilBidang());
             daftarAnggotaDPR.get(indexAnggotaDPRDicari).setPartai(dataAnggota.ambilPartai());
+
+            konfigurasiTabel(dataAnggota);
         } else {
             System.out.println("tidak ditemukan id sama");
         }
@@ -99,6 +123,16 @@ public class DPR {
         int indexAnggotaDPRDicari = cariAnggota(idAnggota);
         if (indexAnggotaDPRDicari != daftarAnggotaDPR.size()) {
             daftarAnggotaDPR.remove(indexAnggotaDPRDicari);
+
+            this.maksLebarId = 3;
+            this.maksLebarNama = 5;
+            this.maksLebarBidang = 7;
+            this.maksLebarPartai = 7;
+
+            for(AnggotaDPR anggota: daftarAnggotaDPR) {
+                setMaksLebarId(Math.max(this.ambilMaksLebarId(), String.valueOf(anggota.ambilId()).length() + 1));
+                konfigurasiTabel(anggota);
+            }
         } else {
             System.out.println("tidak ditemukan id sama");
         }
@@ -110,6 +144,7 @@ public class DPR {
                 + maksLebarBidang + "s%-"
                 + maksLebarPartai + "s%n",
                 "id", "nama", "bidang", "partai");
+
         for (AnggotaDPR anggota : daftarAnggotaDPR) {
             System.out.printf("%-" + maksLebarId + "d%-"
                     + maksLebarNama + "s%-"
@@ -117,6 +152,7 @@ public class DPR {
                     + maksLebarPartai + "s%n",
                     anggota.ambilId(), anggota.ambilNama(), anggota.ambilBidang(), anggota.ambilPartai());
         }
+
         System.out.println();
     }
 }
