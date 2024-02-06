@@ -59,15 +59,20 @@ vector<AnggotaDPR> DPR::ambilDaftarAnggotaDPR() {
     return daftarAnggotaDPR;
 }
 
+void DPR::konfigurasiTabel(AnggotaDPR anggotaBaru) {
+    setMaksLebarNama(maksimum(this->ambilMaksLebarNama(), anggotaBaru.ambilNama().size() + 1));
+    setMaksLebarBidang(maksimum(this->ambilMaksLebarBidang(), anggotaBaru.ambilBidang().size() + 1));
+    setMaksLebarPartai(maksimum(this->ambilMaksLebarPartai(), anggotaBaru.ambilPartai().size() + 1));
+}
+
 void DPR::tambahAnggota(AnggotaDPR anggotaBaru) {
     // pastikan tidak ada id yang sama
     unsigned int indexAnggotaDPRDicari = cariAnggota(anggotaBaru.ambilId());
     if(indexAnggotaDPRDicari == daftarAnggotaDPR.size()) {
         this->daftarAnggotaDPR.push_back(anggotaBaru);
+
         setMaksLebarId(maksimum(this->ambilMaksLebarId(), hitungPanjangUnsignedInt(anggotaBaru.ambilId()) + 1));
-        setMaksLebarNama(maksimum(this->ambilMaksLebarNama(), anggotaBaru.ambilNama().size() + 1));
-        setMaksLebarBidang(maksimum(this->ambilMaksLebarBidang(), anggotaBaru.ambilBidang().size() + 1));
-        setMaksLebarPartai(maksimum(this->ambilMaksLebarPartai(), anggotaBaru.ambilPartai().size() + 1));
+        konfigurasiTabel(anggotaBaru);
     } else {
         cout << "ditemukan id sama\n";
     }
@@ -118,6 +123,8 @@ void DPR::ubahDataAnggota(unsigned int idAnggota, AnggotaDPR dataAnggota) {
         daftarAnggotaDPR[indexAnggotaDPRDicari].setNama(dataAnggota.ambilNama());
         daftarAnggotaDPR[indexAnggotaDPRDicari].setBidang(dataAnggota.ambilBidang());
         daftarAnggotaDPR[indexAnggotaDPRDicari].setPartai(dataAnggota.ambilPartai());
+
+        konfigurasiTabel(dataAnggota);
     } else {
         cout << "tidak ditemukan id sama\n";
     }
@@ -130,17 +137,31 @@ void DPR::hapusDataAnggota(unsigned int idAnggota) {
     // jika ditemukan, hapus data anggota
     if(indexAnggotaDPRDicari != daftarAnggotaDPR.size()) {
         daftarAnggotaDPR.erase(daftarAnggotaDPR.begin() + indexAnggotaDPRDicari);
+
+        // perbarui maksimum dengan mengecek keseluruhan
+        this->maksLebarId = 3;
+        this->maksLebarNama = 5;
+        this->maksLebarBidang = 7;
+        this->maksLebarPartai = 7;
+
+        for(AnggotaDPR anggota: daftarAnggotaDPR) {
+            setMaksLebarId(maksimum(this->ambilMaksLebarId(), hitungPanjangUnsignedInt(anggota.ambilId()) + 1));
+            konfigurasiTabel(anggota);
+        }
     } else {
         cout << "tidak ditemukan id sama\n";
     }
 }
 
 void DPR::tampilkan() {
+    // tampilkan header
     cout << left << setw(maksLebarId) << "id"
                     << setw(maksLebarNama) << "nama"
                     << setw(maksLebarBidang) << "bidang"
                     << setw(maksLebarPartai) << "partai"
                     << endl;
+
+    // tampilkan data
     for(AnggotaDPR anggota: daftarAnggotaDPR) {
         cout << left << setw(maksLebarId) << anggota.ambilId()
                             << setw(maksLebarNama) << anggota.ambilNama()

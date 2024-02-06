@@ -26,6 +26,8 @@ public:
     unsigned int ambilMaksLebarPartai();
     vector<AnggotaDPR> ambilDaftarAnggotaDPR();
 
+    void konfigurasiTabel(AnggotaDPR);
+
     unsigned int maksimum(unsigned int, unsigned int);
     unsigned int hitungPanjangUnsignedInt(unsigned int);
     
