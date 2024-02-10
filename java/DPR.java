@@ -6,7 +6,6 @@ public class DPR {
     private int maksLebarNama;
     private int maksLebarBidang;
     private int maksLebarPartai;
-    private int indexFiturYangDilih;
     private List<AnggotaDPR> daftarAnggotaDPR;
 
     public DPR() {
@@ -14,7 +13,6 @@ public class DPR {
         this.maksLebarNama = 5;
         this.maksLebarBidang = 7;
         this.maksLebarPartai = 7;
-        this.indexFiturYangDilih = 0;
         this.daftarAnggotaDPR = new ArrayList<>();
     }
 
@@ -32,10 +30,6 @@ public class DPR {
 
     public void setMaksLebarPartai(int maksLebarPartai) {
         this.maksLebarPartai = maksLebarPartai;
-    }
-
-    public void setIndexFiturYangDilih(int indexFiturYangDilih) {
-        this.indexFiturYangDilih = indexFiturYangDilih;
     }
 
     public void setDaftarAnggotaDPR(List<AnggotaDPR> daftarAnggotaDPR) {
@@ -78,23 +72,6 @@ public class DPR {
         } else {
             System.out.println("ditemukan id sama");
         }
-    }
-
-    private int maksimum(int a, int b) {
-        return a > b ? a : b;
-    }
-
-    private int hitungPanjangUnsignedInt(int bil) {
-        int totalDigit = 0;
-        if(bil == 0) totalDigit = 1;
-        else {
-            while(bil != 0) {
-                bil /= 10;
-                totalDigit++;
-            }
-        }
-
-        return totalDigit;
     }
 
     private int cariAnggota(int idAnggota) {
