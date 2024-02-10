@@ -115,21 +115,33 @@ public class DPR {
         }
     }
 
-    public void tampilkan() {
-        System.out.printf("%-" + maksLebarId + "s%-"
-                + maksLebarNama + "s%-"
-                + maksLebarBidang + "s%-"
-                + maksLebarPartai + "s%n",
-                "id", "nama", "bidang", "partai");
+    public void printGarisPendek(int panjang, boolean prefix, boolean postfix) {
+        if (prefix) System.out.print("+");
+        for (int i = 0; i < panjang; i++) System.out.print("-");
+        if (postfix) System.out.println("+");
+    }
 
+    public void printGaris() {
+        printGarisPendek(maksLebarId + 1, true, false);
+        printGarisPendek(maksLebarNama + 1, true, false);
+        printGarisPendek(maksLebarBidang + 1, true, false);
+        printGarisPendek(maksLebarPartai + 1, true, true);
+    }
+
+    public void tampilkan() {
+        // tampilkan header
+        printGaris();
+        System.out.printf("| %-"+ maksLebarId +"s| %-"+ maksLebarNama +"s| %-"+ maksLebarBidang +"s| %-"+ maksLebarPartai +"s|\n",
+                "id", "nama", "bidang", "partai");
+        printGaris();
+
+        // tampilkan data
         for (AnggotaDPR anggota : daftarAnggotaDPR) {
-            System.out.printf("%-" + maksLebarId + "d%-"
-                    + maksLebarNama + "s%-"
-                    + maksLebarBidang + "s%-"
-                    + maksLebarPartai + "s%n",
+            System.out.printf("| %-"+ maksLebarId +"s| %-"+ maksLebarNama +"s| %-"+ maksLebarBidang +"s| %-"+ maksLebarPartai +"s|\n",
                     anggota.ambilId(), anggota.ambilNama(), anggota.ambilBidang(), anggota.ambilPartai());
         }
 
+        if (!daftarAnggotaDPR.isEmpty()) printGaris();
         System.out.println();
     }
 }
