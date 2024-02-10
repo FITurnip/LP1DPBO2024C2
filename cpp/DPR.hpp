@@ -34,5 +34,7 @@ public:
     void ubahDataAnggota(unsigned int, AnggotaDPR);
     void hapusDataAnggota(unsigned int);
 
+    void printGarisPendek(unsigned int, bool, bool);
+    void printGaris();
     void tampilkan();
 };

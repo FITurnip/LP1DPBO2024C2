@@ -146,21 +146,36 @@ void DPR::hapusDataAnggota(unsigned int idAnggota) {
     }
 }
 
+void DPR::printGarisPendek(unsigned int panjang, bool prefix, bool postfix) {
+    if(prefix) cout << "+";
+    for(unsigned int i = 0; i < panjang; i++) cout << "-";
+    if(postfix) cout << "+\n";
+}
+
+void DPR::printGaris() {
+    printGarisPendek(maksLebarId + 1, 1, 0);
+    printGarisPendek(maksLebarNama + 1, 1, 0);
+    printGarisPendek(maksLebarBidang + 1, 1, 0);
+    printGarisPendek(maksLebarPartai + 1, 1, 1);
+}
+
 void DPR::tampilkan() {
     // tampilkan header
-    cout << left << setw(maksLebarId) << "id"
-                    << setw(maksLebarNama) << "nama"
-                    << setw(maksLebarBidang) << "bidang"
-                    << setw(maksLebarPartai) << "partai"
-                    << endl;
+    printGaris();
+    cout << left << setw(maksLebarId) << "| id "
+                    << setw(maksLebarNama) << "| nama "
+                    << setw(maksLebarBidang) << "| bidang "
+                    << setw(maksLebarPartai) << "| partai |\n";
+    printGaris();
 
     // tampilkan data
     for(AnggotaDPR anggota: daftarAnggotaDPR) {
-        cout << left << setw(maksLebarId) << anggota.ambilId()
-                            << setw(maksLebarNama) << anggota.ambilNama()
-                            << setw(maksLebarBidang) << anggota.ambilBidang()
-                            << setw(maksLebarPartai) << anggota.ambilPartai()
-                            << endl;
+        cout << left << "| " << setw(maksLebarId) << anggota.ambilId()
+                            << "| " << setw(maksLebarNama) << anggota.ambilNama()
+                            << "| " << setw(maksLebarBidang) << anggota.ambilBidang()
+                            << "| " << setw(maksLebarPartai) << anggota.ambilPartai() << "|\n";
     }
+
+    if(!daftarAnggotaDPR.empty()) printGaris();
     cout << endl;
 }
