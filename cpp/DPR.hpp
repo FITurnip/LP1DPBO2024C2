@@ -8,7 +8,6 @@ private:
     unsigned int maksLebarId, maksLebarNama, maksLebarBidang, maksLebarPartai;
     vector<AnggotaDPR> daftarAnggotaDPR;
 
-    unsigned int indexFiturYangDilih;
 public:
     DPR();
     ~DPR();
@@ -17,7 +16,6 @@ public:
     void setMaksLebarNama(unsigned int);
     void setMaksLebarBidang(unsigned int);
     void setMaksLebarPartai(unsigned int);
-    void setIndexFiturYangDilih(unsigned int);
     void setDaftarAnggotaDPR(vector<AnggotaDPR>);
 
     unsigned int ambilMaksLebarId();

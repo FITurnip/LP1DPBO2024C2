@@ -9,7 +9,6 @@ DPR::DPR() {
     this->maksLebarNama = 5;
     this->maksLebarBidang = 7;
     this->maksLebarPartai = 7;
-    this->indexFiturYangDilih = 0;
 }
 
 DPR::~DPR() {
@@ -29,10 +28,6 @@ void DPR::setMaksLebarBidang(unsigned int maksLebarBidang) {
 
 void DPR::setMaksLebarPartai(unsigned int maksLebarPartai) {
     this->maksLebarPartai = maksLebarPartai;
-}
-
-void DPR::setIndexFiturYangDilih(unsigned int indexFiturYangDilih) {
-    this->indexFiturYangDilih = indexFiturYangDilih;
 }
 
 void DPR::setDaftarAnggotaDPR(vector<AnggotaDPR> daftarAnggotaDPR) {
@@ -79,9 +74,7 @@ void DPR::tambahAnggota(AnggotaDPR anggotaBaru) {
 }
 
 unsigned int DPR::maksimum(unsigned int a, unsigned int b) {
-    unsigned int terbesar = a;
-    if(b > a) terbesar = b;
-    return terbesar;
+    return (a > b ? a : b);
 }
 
 unsigned int DPR::hitungPanjangUnsignedInt(unsigned int bil) {
@@ -99,7 +92,7 @@ unsigned int DPR::hitungPanjangUnsignedInt(unsigned int bil) {
 
 unsigned int DPR::cariAnggota(unsigned int idAnggota) {
     // cari terlebih dahulu anggota berdasarkan id
-    unsigned idDitunjuk;
+    unsigned int idDitunjuk;
     int indeks = 0, banyakAnggota = daftarAnggotaDPR.size();
     bool ditemukan = 0;
 
