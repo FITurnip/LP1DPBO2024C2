@@ -3,6 +3,7 @@
 Saya Franklin Impianro Turnip mengerjakan Latihan Praktikum 1 dalam mata kuliah Desain Pemrograman Berorientasi Objek untuk keberkahannya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin.
 
 ## Desain Program
+Pada dasarnya terdiri dari tiga class: Main, DPR, Anggota DPR. Class AnggotaDPR dapat 
 
 ## Penjelesan Alur
 Pada LP ini, dibuat console yang dapat menambah, mengubah, dan menghapus anggota DPR. Cara penggunaannya adalah sebagai berikut.
@@ -14,4 +15,4 @@ Pada LP ini, dibuat console yang dapat menambah, mengubah, dan menghapus anggota
 6. Apabila menjalankan nomor 5, program akan dimatikan
 
 ## Dokumentasi
-![ALT result](./cpp/result.png)
+[Screencast from 10-02-24 22:12:01.webm](https://github.com/FITurnip/LP1DPBO2024C2/assets/119851319/116979dc-d79a-4541-a53f-68eb96e0c45a)
