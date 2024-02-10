@@ -6,7 +6,6 @@ class DPR:
         self.maksLebarNama = 5
         self.maksLebarBidang = 7
         self.maksLebarPartai = 7
-        self.indexFiturYangDilih = 0
         self.daftarAnggotaDPR = []
 
     def setMaksLebarId(self, maksLebarId):
@@ -20,9 +19,6 @@ class DPR:
 
     def setMaksLebarPartai(self, maksLebarPartai):
         self.maksLebarPartai = maksLebarPartai
-
-    def setIndexFiturYangDilih(self, indexFiturYangDilih):
-        self.indexFiturYangDilih = indexFiturYangDilih
 
     def setDaftarAnggotaDPR(self, daftarAnggotaDPR):
         self.daftarAnggotaDPR = daftarAnggotaDPR
@@ -55,15 +51,6 @@ class DPR:
             self.konfigurasiTabel(anggotaBaru)
         else:
             print("ditemukan id sama")
-
-    def maksimum(self, a, b):
-        return max(a, b)
-
-    def hitungPanjangUnsignedInt(self, bil):
-        if bil == 0:
-            return 1
-        else:
-            return len(str(bil))
 
     def cariAnggota(self, idAnggota: int):
         index = 0
