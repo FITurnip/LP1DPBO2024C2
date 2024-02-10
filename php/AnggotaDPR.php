@@ -5,12 +5,14 @@ class AnggotaDPR {
     private string $nama;
     private string $bidang;
     private string $partai;
+    private string $photoUrl;
 
-    public function __construct(int $id = 0, string $nama = "", string $bidang = "", string $partai = "") {
+    public function __construct(int $id = 0, string $nama = "", string $bidang = "", string $partai = "", string $photoUrl = "") {
         $this->id = $id;
         $this->nama = $nama;
         $this->bidang = $bidang;
         $this->partai = $partai;
+        $this->photoUrl = $photoUrl;
     }
 
     public function setId(int $id) {
@@ -29,6 +31,10 @@ class AnggotaDPR {
         $this->partai = $partai;
     }
 
+    public function setPhotoUrl(string $photoUrl) {
+        $this->$photoUrl = $photoUrl;
+    }
+
     public function ambilId() {
         return $this->id;
     }
@@ -43,6 +49,10 @@ class AnggotaDPR {
 
     public function ambilPartai() {
         return $this->partai;
+    }
+
+    public function ambilPhotoUrl() {
+        return $this->photoUrl;
     }
 }
 
