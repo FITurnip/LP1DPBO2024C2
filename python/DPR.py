@@ -84,11 +84,28 @@ class DPR:
         else:
             print("tidak ditemukan id sama")
 
+    def printGarisPendek(self, panjang, prefix, postfix):
+        if prefix:
+            print("+", end="")
+        for i in range(panjang):
+            print("-", end="")
+        if postfix:
+            print("+")
+
+    def printGaris(self):
+        self.printGarisPendek(self.maksLebarId + 1, True, False)
+        self.printGarisPendek(self.maksLebarNama + 1, True, False)
+        self.printGarisPendek(self.maksLebarBidang + 1, True, False)
+        self.printGarisPendek(self.maksLebarPartai + 1, True, True)
+
     def tampilkan(self):
-        print("{:<{}} {:<{}} {:<{}} {:<{}}".format("id", self.maksLebarId, "nama", self.maksLebarNama,
-                                                    "bidang", self.maksLebarBidang, "partai", self.maksLebarPartai))
+        self.printGaris()
+        print(f"| {'id':<{self.maksLebarId}}| {'nama':<{self.maksLebarNama}}| {'bidang':<{self.maksLebarBidang}}| {'partai':<{self.maksLebarPartai}}|")
+        self.printGaris()
+
         for anggota in self.daftarAnggotaDPR:
-            print("{:<{}} {:<{}} {:<{}} {:<{}}".format(anggota.ambilId(), self.maksLebarId, anggota.ambilNama(),
-                                                        self.maksLebarNama, anggota.ambilBidang(), self.maksLebarBidang,
-                                                        anggota.ambilPartai(), self.maksLebarPartai))
+            print(f"| {anggota.ambilId():<{self.maksLebarId}}| {anggota.ambilNama():<{self.maksLebarNama}}| {anggota.ambilBidang():<{self.maksLebarBidang}}| {anggota.ambilPartai():<{self.maksLebarPartai}}|")
+            
+        if self.daftarAnggotaDPR:
+            self.printGaris()
         print()
